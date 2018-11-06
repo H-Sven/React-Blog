@@ -2,9 +2,11 @@
   "name": "myreact",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
   "dependencies": {
     "@babel/core": "7.1.0",
     "@svgr/webpack": "2.4.1",
+    "antd": "^3.10.4",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "9.0.0",
     "babel-jest": "23.6.0",
@@ -64,7 +66,8 @@
   "browserslist": [
     ">0.2%",
     "not dead",
-    "not ie <= 11",
+    "Firefox > 20",
+    "ie >= 8",
     "not op_mini all"
   ],
   "jest": {
@@ -111,6 +114,13 @@
   "babel": {
     "presets": [
       "react-app"
+    ],
+    "plugins": [
+      ["import", { "libraryName": "antd", "style": "css" }]
     ]
+  },
+  "devDependencies": {
+    "babel-plugin-import": "^1.11.0",
+    "node-sass": "^4.10.0"
   }
 }
