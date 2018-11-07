@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './header.scss';
 import { Menu, Icon } from 'antd';
 import { withRouter } from 'react-router-dom';
-
  class Header extends Component {
   constructor(props) {
     super(props)
@@ -30,7 +29,8 @@ import { withRouter } from 'react-router-dom';
   }
   render() {
     return (
-      <Menu onClick={this.handleClick} selectedKeys={[this.props.location.pathname === '/' ? '/home' : this.props.location.pathname]} mode="horizontal" >
+      <div className="menu_class">
+        <Menu onClick={this.handleClick} selectedKeys={[this.props.location.pathname === '/' ? '/home' : this.props.location.pathname]} mode="horizontal" >
         {this.state.itemList.map((item)=>{
           return (
             <Menu.Item key={item.key}>
@@ -39,6 +39,7 @@ import { withRouter } from 'react-router-dom';
           )
         })}
       </Menu>
+      </div>
     )
   }
 }
