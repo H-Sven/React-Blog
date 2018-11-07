@@ -1,22 +1,22 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import { Carousel  } from 'antd';
-import './App.scss';
-
+import Header from './views/header/Header';
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.callFn = this.callFn.bind(this)
+    this.state = {
+       pageName:'',
+    }
+  }
+  callFn(pageName){ //获取菜单栏选择的值
+    this.setState({pageName:pageName})
+  }
+  
   render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <Carousel autoplay>
-            <div><h3>1</h3></div>
-            <div><h3>2</h3></div>
-            <div><h3>3</h3></div>
-            <div><h3>4</h3></div>
-          </Carousel>
-        </header>
-      </div>
-    );
+    return <div>
+      <Header callFn={this.callFn} />
+      {this.props.children}
+    </div>;
   }
 }
 
