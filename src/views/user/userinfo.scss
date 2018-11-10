@@ -1,0 +1,47 @@
+.user_info {
+  padding-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  .my_info {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    .info {
+      width: 50%;
+      .anticon {
+        margin-right: 10px;
+        font-size: 20px;
+      }
+      li {
+        display: flex;
+        align-items: center;
+        padding: 5px 0;
+        flex-wrap: wrap;
+        span {
+          width: 90%;
+          display: flex;
+          flex-wrap: wrap;
+          .ant-tag {
+            margin-bottom: 5px;
+          }
+        }
+      }
+      .my_stack {
+        align-items: flex-start;
+      }
+      .my_name {
+        font-weight: 600;
+        font-size: 26px;
+      }
+    }
+    .about {
+      width: 50%;
+      background-color: #eeeeee;
+      padding: 20px;
+      .title {
+        font-size: 16px;
+        padding-bottom: 20px;
+      }
+    }
+  }
+}

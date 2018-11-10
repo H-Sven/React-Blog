@@ -1,13 +1,22 @@
 import React, { Component } from 'react';
-// import { Link } from 'react-router-dom';
-import { Avatar } from 'antd';
-import './user.scss';
+import UserInfo from './UserInfo';
+import Work from './Work';
 
 export default class User extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      style:{
+        margin:'0 auto',
+        width:'1200px',
+      }
+    }
+  }
   render() {
     return (
-      <div className="my_user">
-        <Avatar icon="user" size={50} />
+      <div className="my_user" style={this.state.style}>
+        <UserInfo></UserInfo>
+        <Work></Work>
       </div>
     )
   }

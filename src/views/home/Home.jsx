@@ -1,7 +1,20 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
+import { get } from "../../static/js/http";
 
 export default class Home extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      list:[]
+    }
+  }
+  componentDidMount() {
+    get('/list').then(res=>{
+      this.setState({list:res})
+    })
+  }
+  
   render() {
     return (
       <div>
