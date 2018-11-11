@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
-import { get } from "../../static/js/http";
+// import { get } from "../../static/js/http";
 
 export default class Home extends Component {
   constructor(props) {
@@ -10,9 +10,9 @@ export default class Home extends Component {
     }
   }
   componentDidMount() {
-    get('/list').then(res=>{
-      this.setState({list:res})
-    })
+    // get('/homeList').then(res=>{
+    //   this.setState({list:res})
+    // })
   }
   
   render() {

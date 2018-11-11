@@ -1,7 +1,14 @@
-.ant-card {
-  margin-top: 30px;
-  .ant-card-head-title {
-    font-size: 18px;
+.work {
+  .work_title {
     font-weight: 600;
+    font-size: 18px;
+    margin: 15px 0;
+  }
+  .ant-card {
+    margin-bottom: 20px;
+    .ant-card-head-title {
+      font-size: 18px;
+      font-weight: 600;
+    }
   }
 }

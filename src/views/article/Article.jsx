@@ -1,14 +1,34 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { get } from "../../static/js/http";
+import { List } from 'antd';
+import './aryicle.scss';
 
 export default class Article extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      articleList:[]
+    }
+  }
+  componentDidMount() {
+    get('/articleList').then(res=>{
+      this.setState({articleList:res})
+    })
+  }
+  
   render() {
     return (
-      <div>
-        <p>Article</p>
-        {/*search,state可以自定义，获取方法：this.props.location.search，this.props.location.state*/}
-        <Link to="/home">to home</Link>
-        <Link to="/user">to user</Link>
+      <div className="article">
+        <List dataSource={this.state.articleList} 
+          renderItem={item => (
+            <List.Item>
+              <List.Item.Meta
+                title={<a href="https://ant.design">{item.title}</a>}
+                description={item.text}
+              />
+            </List.Item>
+          )}
+        />,
       </div>
     )
   }
