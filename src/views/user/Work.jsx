@@ -27,7 +27,7 @@ export default class UserInfo extends Component {
         <div className="work_title">工作经历</div>
         {this.state.workList.map((item,index)=>{
           return (
-            <Skeleton loading={this.state.loadingWork} active>
+            <Skeleton loading={this.state.loadingWork} active key={index}>
               <Card title={item.title} key={index}>
                 <p>{item.position}</p>
                 <p>{item.date}</p>
@@ -41,12 +41,12 @@ export default class UserInfo extends Component {
         <div className="work_title">项目经历</div>
         {this.state.projectList.map((item,index)=>{
           return (
-            <Skeleton loading={this.state.loadingProject} active>
+            <Skeleton loading={this.state.loadingProject} active key={index}>
               <Card title={item.title} key={index}>
                 <p>{item.introduce}</p>
                 <p>{item.date}</p>
                 {item.projectContext.map((items,indexs)=>{
-                    return <p key={indexs}>{items}</p>
+                  return <p key={indexs}>{items}</p>
                 })}
               </Card>
             </Skeleton>
