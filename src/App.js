@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Header from './views/header/Header';
+import Footer from './views/footer/Footer';
 import './App.scss';
 class App extends Component {
   constructor(props) {
@@ -18,6 +19,7 @@ class App extends Component {
       <div className="app_box">
         <Header callFn={this.callFn} />
         {this.props.children}
+        <Footer />
       </div>
     );
   }
