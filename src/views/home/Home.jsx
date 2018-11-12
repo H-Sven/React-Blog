@@ -21,10 +21,12 @@ export default class Home extends Component {
       this.setState({articleList:res})
       setTimeout(() => {
         this.setState({loadingArticle:false})
-      }, 1000);
+      }, 500);
     })
   }
-  
+  goArticle(id){
+    this.props.history.push(`/Article/${id}`)
+  }
   render() {
     return (
       <div>
@@ -38,7 +40,7 @@ export default class Home extends Component {
             return (
               <Skeleton loading={this.state.loadingArticle} active key={index}>
                 <div className="article_list" key={index}>
-                  <div className="article_info">
+                  <div className="article_info" onClick={this.goArticle.bind(this,index)}>
                     <a href="javscript:;">
                       <h3>[{item.tag}]&nbsp;{item.title}</h3>
                     </a>
