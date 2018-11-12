@@ -1,12 +1,20 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom';
+import './home.scss';
+import { Carousel  } from 'antd';
+// import { Link } from 'react-router-dom';
 // import { get } from "../../static/js/http";
 
 export default class Home extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      list:[]
+      list:[],
+      bannerImage:[
+        'Banner1',
+        'Banner2',
+        'Banner3',
+        'Banner4',
+      ]
     }
   }
   componentDidMount() {
@@ -18,10 +26,11 @@ export default class Home extends Component {
   render() {
     return (
       <div>
-        <p>Home</p>
-        {/*search,state可以自定义，获取方法：this.props.location.search，this.props.location.state*/}
-        <Link to="/user">to list</Link>
-        <Link to="/article">to article</Link>
+        <Carousel autoplay>
+          {this.state.bannerImage.map((item,index)=>{
+            return <div key={index}><h3>{item}</h3></div>
+          })}
+        </Carousel>
       </div>
     )
   }
