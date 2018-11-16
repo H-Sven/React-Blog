@@ -9,6 +9,7 @@ import { withRouter } from 'react-router-dom';
       current: '/home',
       itemList:[
         {key:'/home',title:'首页',icon:'home'},
+        {key:'/toutiao',title:'豆瓣电影',icon:'user'},
         {key:'/user',title:'关于我',icon:'user'},
       ]
     }

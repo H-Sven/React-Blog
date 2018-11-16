@@ -7,15 +7,19 @@ axios.defaults.timeout = 10000;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 axios.defaults.withCredentials = true;  //请求携带cookie
 axios.defaults.crossDomain = true;  //请求携带额外数据(不包含cookie)
-axios.defaults.baseURL = "https://easy-mock.com/mock/5a7d55576583872b5710d384/siwen"; //请求地址baseUrl
+axios.defaults.baseURL = `https://easy-mock.com/mock/5a7d55576583872b5710d384/siwen`; //请求地址baseUrl
 //http request 拦截器
 axios.interceptors.request.use(
   config => {
-    config.data = qs.stringify(config.data);
-    // const token = getCookie('名称');
-    // if(token){
-    //   config.params = {'token':token}
-    // }
+    if (config.method === 'post') {
+      config.data = qs.stringify({
+        ...config.data
+      });
+    }else{
+      config.params = {
+        ...config.params,
+      }
+    }
     return config;
   },
   error => {
@@ -31,7 +35,7 @@ axios.interceptors.response.use(
     return response;
   },
   error => {
-    alert("网络错误，请刷新重试");
+    // alert("网络错误，请刷新重试");
     return Promise.reject(error);
   }
 );
@@ -44,20 +48,15 @@ axios.interceptors.response.use(
  */
 export function get(url, params = {}) {
   return new Promise((resolve, reject) => {
-    axios
-      .get(url, {
-        params: params
-      })
-      .then(response => {
-        if (!response.data.success) {
+    axios.get(url, { params }).then(response => {
+      if (!response.data.success) {
         resolve(response.data.error);
-        }else {
-          resolve(response.data.payload);
-        }
-      })
-      .catch(err => {
-        reject(err);
-      });
+      }else {
+        resolve(response.data.payload);
+      }
+    }).catch(err => {
+      reject(err);
+    });
   });
 }
 
@@ -70,15 +69,13 @@ export function get(url, params = {}) {
 
 export function post(url, data = {}) {
   return new Promise((resolve, reject) => {
-    axios.post(url, data).then(
-      response => {
-        if (!response.data.success) {
-          resolve(response.data.error);
-        } else {
-          resolve(response.data.payload);
-        }
-      },
-      err => {
+    axios.post(url, data).then(response => {
+      if (!response.data.success) {
+        resolve(response.data.error);
+      } else {
+        resolve(response.data.payload);
+      }
+      },err => {
         reject(err);
       }
     );
